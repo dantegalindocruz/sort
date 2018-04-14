@@ -35,57 +35,66 @@
 //    //   gridContainer.appendChild(currentContainer);
 //    // }
 
-var gridContainer = document.querySelector("#grid");
-var grids = document.querySelectorAll("#grid .item");
-var currentContainer;
-var gridArray;
+// var gridContainer = document.querySelector("#grid");
+// var grids = document.querySelectorAll("#grid .item");
+// var currentContainer;
+// var gridArray = [];
+// var d = [100,28,4,26];
+//
+//
+// function bubbleSort(array){
+//   var i, j, temp;
+//
+//   for(i = 0; i < array.length; i++){
+//     for(j = 0; j < (array.length - i -1); j++){
+//       if(array[j].innerText > array[j+ 1].innerText){
+//         temp = array[j];
+//         array[j] = array[j+1];
+//         array[j+1] = temp;
+//       }
+//     }
+//   }
+//   return array;
+// }
+//
+//
+//
+// for(var i = 0; i < grids.length; i++){
+//   gridArray[i] = grids[i];
+// }
+// bubbleSort(gridArray);
+//
+// //
+// for(var j = 0; j < gridArray.length; j++){
+//     gridContainer.appendChild(gridArray[j]);
+// }
 
-function changeNodeListToArray(nodeList){
-  var nodeArray = [];
-  for(var i = 0; i < nodeList.length; i++){
-    nodeArray[i] = nodeList[i];
+
+
+
+
+//-------------------------------------------
+var gridItems = document.querySelectorAll('.item');
+var defaultHeight = gridItems[0].style.height;
+var defaultWidth = gridItems[0].style.width;
+for(var i =0; i < gridItems.length; i++){
+gridItems[i].addEventListener('click', function(event){
+    event.preventDefault();
+  if(this.style.height === defaultHeight){
+    this.style.backgroundColor= '#000';
+    this.style.position= "relative";
+    this.style.transition = 'height 0.5s ease-in 0s';
+    // this.style.transition = 'width 0.5s ease-in 0s'
+    this.style.height = '600px';
+    this.style.backgroundColor= '#000';
+    this.style.width= '90%';
+  } else{
+    this.style.position= "static";
+    // this.style.transition = 'height 0.5s ease-out 0s';
+    this.style.transition = 'width 0.5s ease-out 0s';
+    this.style.width = defaultWidth;
+    this.style.height= defaultHeight;
   }
-  return nodeArray;
+});
+
 }
-function alphabetize(array){
-  var i, j, temp;
-
-  for(i = 0; i < array.length; i++){
-    for(j = 0; j < (array.length - i -1); j++){
-      if(array[j].innerText > array[j+ 1].innerText){
-        temp = array[j];
-        array[j] = array[j+1];
-        array[j+1] = temp;
-      }
-    }
-  }
-  return array;
-}
-
-function reverseOrder(array){
-  var i, j, temp;
-
-  for(i = 0; i < array.length; i++){
-    for(j = 0; j < (array.length - i -1); j++){
-      if(array[j].innerText < array[j+ 1].innerText){
-        temp = array[j];
-        array[j] = array[j+1];
-        array[j+1] = temp;
-      }
-    }
-  }
-  return array;
-}
-
-
-
-function printToScreen(array){
-  for(var j = 0; j < array.length; j++){
-      gridContainer.appendChild(array[j]);
-  }
-}
-
-
-gridArray = changeNodeListToArray(grids);
-alphabetize(gridArray);
-printToScreen(gridArray);
