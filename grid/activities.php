@@ -1,4 +1,4 @@
-<?php
+?php
 /*
 Plugin Name: Activities
 Plugin URI: https://chattanooga.gov
@@ -24,7 +24,12 @@ add_action('wp_enqueue_scripts', 'activities_scripts');
 /**
  * Activites
  */
-function get_n_sort_activities() {
+function get_n_sort_activities($atts) {
+		$atts = shortcode_atts(
+		array(
+			'accordian' => 'true',
+		), $atts, 'display-activities' );
+
 	global $wpdb;
 
 	$return_text = '';
@@ -47,9 +52,11 @@ function get_n_sort_activities() {
 				$return_text .= '<div class="container">'; // .container holds three items plus an accordian
 			}
 			if (1 == $post_count / 4) { // Every three posts, add accordian then end div's and start a new set
-				$return_text .= '<div class="accordian"></div>';  // .accordian opens for selected post
+				if ('true' == $atts['accordian']) {
+					$return_text .= '<div class="accordian"></div>';  // .accordian opens for selected post
+				}
 				$return_text .= '</div>'; // End of container
-    			$return_text .= '<div class="container">';
+				$return_text .= '<div class="container">';
 			}
 
 			$thumb_id = get_post_thumbnail_id($my_post->ID);
@@ -69,7 +76,9 @@ function get_n_sort_activities() {
 
 		} // end foreach
 		if ($post_count >= 1) { // End the last div
-			$return_text .= '<div class="accordian"></div>';
+			if ('true' == $atts['accordian']) {
+				$return_text .= '<div class="accordian"></div>';
+			}
 			$return_text .= '</div>'; // End of container
 		}
 
