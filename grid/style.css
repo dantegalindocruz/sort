@@ -1,0 +1,90 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#main img{
+  width: 100%;
+  height: 100%;
+}
+
+ .item{
+ width: 33.33%;
+ float:left;
+ height: 300px; 
+ margin-bottom:10px;	 
+}
+
+.item p{
+  position: relative;
+  bottom: 55px;
+  height: 46px;
+  text-align: center;
+  color: #fff;
+  background-color: rgba(130, 128, 128,.8);
+  padding: 15px 0;
+}
+
+.item img{
+  object-fit: cover;
+  border: 1px solid black;
+}
+
+.container{
+ width: 100%;
+
+ 
+}
+
+/* This section deals with the accordian */
+.container .accordian{
+      transition: "height .3s ease-out 0s";
+      height: 0;
+      width: 100%;
+      background-color: #000;
+      clear: both;
+      color: #fff;
+	  overflow:scroll;
+    }
+
+.accordian a{
+   color:white;
+}
+
+.postContent{
+	visibility:hidden;
+}
+
+
+
+
+/*Desktop*/
+@media only screen and (max-width: 1800px){
+
+}
+
+/* mobile*/
+
+@media only screen and (min-width:900px) and (max-width: 1450px){
+  .item{
+    width: 50%;
+  }
+}
+
+/*Ipad*/
+@media only screen and (min-width:700px) and (max-width: 900px){
+  .item{
+    width: 100%;
+    height: 500px;
+  }
+}
+/*Mobile devices*/
+@media only screen and (min-width: 300px) and (max-width: 700px){
+  .item{
+    width: 100%;
+    height: 350px;
+  }
+
+}
+
